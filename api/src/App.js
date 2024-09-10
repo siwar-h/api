@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import UsersCard from './UsersCard';
 
 function App() {
   const [userList,setUserList]=useState([])
@@ -25,26 +26,23 @@ function App() {
   
   return (
     <div className="App">
-      <header className="App-header">
-      {/* {
-          userList?.length ? 
-          userList.map((el,i)=>(
-            <div>
-              <hr></hr>
-              <h1>User List</h1>
-              <h1> Name: {el.name} </h1>
-              <h1>User-Name: {el.username} </h1>
-              <h1>Email: {el.email} </h1>
-              <h1>Street: {el.address.street} </h1>
-              <h1> City: {el.address.city} </h1>
-              <hr></hr>
-            </div>
-          )) :
-          <h1> Loading... </h1>
-        } */}
+    <header className="App-header">
+      <h1 >User List</h1>
+      <div className="container">
+        <div className="row">
+          {userList?.length ? (
+            userList.map((user, i) => (
+              <UsersCard key={i} user={user} /> 
+            ))
+          ) : (
+            <h1>Loading...</h1>
+          )}
+        </div>
+      </div>
+    </header>
+  </div>
        
-      </header>
-    </div>
+     
   );
 }
 
